@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .list {
+        display: flex;
+    }
+    .list-item {
+        list-style-type: none;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+    <ul class="list">
+        <li class="list-item">
+            <p id="text1" class="text">0</p>
+            <button type="button" data-target="#text1" class="btn btn-increment">+</button>
+            <button type="button" data-target="#text1" class="btn btn-decrement">-</button>
+        </li>
+        <li class="list-item">
+            <p id="text2" class="text">0</p>
+            <button type="button" data-target="#text2" class="btn btn-increment">+</button>
+            <button type="button" data-target="#text2" class="btn btn-decrement">-</button>
+        </li>
+        <li class="list-item">
+            <p id="text3" class="text">0</p>
+            <button type="button" data-target="#text3" class="btn btn-increment">+</button>
+            <button type="button" data-target="#text3" class="btn btn-decrement">-</button>
+        </li>
+        <li class="list-item">
+            <p id="text4" class="text">0</p>
+            <button type="button" data-target="#text4" class="btn btn-increment">+</button>
+            <button type="button" data-target="#text4" class="btn btn-decrement">-</button>
+        </li>
+        <li class="list-item">
+            <p id="text5" class="text">0</p>
+            <button type="button" data-target="#text5" class="btn btn-increment">+</button>
+            <button type="button" data-target="#text5" class="btn btn-decrement">-</button>
+        </li>
+    </ul>
+
+<script>
+    'use strict';
+
+    const $btn = document.querySelectorAll('.btn');
+    const $list = document.querySelectorAll('.list-item');
+
+    $btn.forEach(function (btn) {
+        btn.addEventListener('click', function (event) {
+            const target = btn.dataset.target;
+
+            if (btn.classList.contains('btn-increment')) {
+                document.querySelector(target).textContent++;
+            } else {
+                document.querySelector(target).textContent--;
+            }
+
+            event.stopPropagation();
+        })
+    });
+
+    $list.forEach(function (btn) {
+        const bg = ['red', 'green', 'yellow'];
+
+        btn.addEventListener('click', function () {
+            const color = bg.shift();
+
+            bg.push(color);
+            this.style.background = color;
+        })
+    });
+</script>
+</body>
+</html>
